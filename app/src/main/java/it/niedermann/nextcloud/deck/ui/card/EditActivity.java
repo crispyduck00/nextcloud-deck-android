@@ -40,6 +40,7 @@ public class EditActivity extends AppCompatActivity {
     private static final String BUNDLE_KEY_ACCOUNT = "account";
     private static final String BUNDLE_KEY_BOARD_LOCAL_ID = "boardLocalId";
     private static final String BUNDLE_KEY_CARD_LOCAL_ID = "cardLocalId";
+    static final String BUNDLE_KEY_DESCRIPTION_PREVIEW = "descriptionPreview";
 
     private ActivityEditBinding binding;
     private EditCardViewModel viewModel;
@@ -108,6 +109,7 @@ public class EditActivity extends AppCompatActivity {
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
+        viewModel.resetDescriptionPreviewShortcut();
         viewModel.setBoardColor(ContextCompat.getColor(this, R.color.primary));
         setIntent(intent);
         loadDataFromIntent();
@@ -120,7 +122,8 @@ public class EditActivity extends AppCompatActivity {
     }
 
     private void loadDataFromIntent() {
-        final var args = getIntent().getExtras();
+        final var navigationIntent = getIntent();
+        final var args = navigationIntent.getExtras();
 
         if (args == null || !args.containsKey(BUNDLE_KEY_ACCOUNT) || !args.containsKey(BUNDLE_KEY_BOARD_LOCAL_ID) || !args.containsKey(BUNDLE_KEY_CARD_LOCAL_ID)) {
             throw new IllegalArgumentException("Provide at least " + BUNDLE_KEY_ACCOUNT + " and " + BUNDLE_KEY_BOARD_LOCAL_ID + " and " + BUNDLE_KEY_CARD_LOCAL_ID + " of the card that should be edited.");
@@ -165,6 +168,13 @@ public class EditActivity extends AppCompatActivity {
                                     invalidateOptionsMenu();
                                     setupViewPager(account);
                                     setupTitle();
+                                    if (args.getBoolean(BUNDLE_KEY_DESCRIPTION_PREVIEW, false)) {
+                                        binding.pager.setCurrentItem(0, false);
+                                        viewModel.requestDescriptionPreview();
+                                        // The ViewModel retains the mode across recreation. Do not
+                                        // jump back to the top again after rotation or tab changes.
+                                        navigationIntent.removeExtra(BUNDLE_KEY_DESCRIPTION_PREVIEW);
+                                    }
                                 }
                             });
                 });
@@ -305,6 +315,12 @@ public class EditActivity extends AppCompatActivity {
         utils.deck.themeStatusBar(this, binding.appBarLayout);
         utils.material.colorTextInputLayout(binding.titleWrapper);
         utils.material.themeTabLayoutOnSurface(binding.tabLayout);
+    }
+
+    @NonNull
+    public static Intent createDescriptionPreviewIntent(@NonNull Context context, @NonNull Account account, long boardLocalId, long cardLocalId) {
+        return createEditCardIntent(context, account, boardLocalId, cardLocalId)
+                .putExtra(BUNDLE_KEY_DESCRIPTION_PREVIEW, true);
     }
 
     @NonNull

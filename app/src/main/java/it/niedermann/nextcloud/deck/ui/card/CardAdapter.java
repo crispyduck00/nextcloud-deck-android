@@ -119,6 +119,10 @@ public class CardAdapter extends RecyclerView.Adapter<AbstractCardViewHolder> im
             }
         });
 
+        viewHolder.bindDescriptionClickListener(selectCardListener == null
+                ? v -> activity.startActivity(EditActivity.createDescriptionPreviewIntent(activity, account, fullBoard.getBoard().getLocalId(), fullCard.getLocalId()))
+                : null);
+
         // Only enable Drag and Drop if there is no one waiting for selecting a card.
         if (selectCardListener == null) {
             viewHolder.bindCardLongClickListener((v) -> {

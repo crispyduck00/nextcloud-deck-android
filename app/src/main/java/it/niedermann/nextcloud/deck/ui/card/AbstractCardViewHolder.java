@@ -66,6 +66,7 @@ public abstract class AbstractCardViewHolder extends RecyclerView.ViewHolder {
 
         bindCardClickListener(null);
         bindCardLongClickListener(null);
+        bindDescriptionClickListener(null);
 
         getCardMenu().setVisibility(hasEditPermission ? View.VISIBLE : View.GONE);
         getCardTitle().setText(fullCard.getCard().getTitle().trim());
@@ -132,6 +133,11 @@ public abstract class AbstractCardViewHolder extends RecyclerView.ViewHolder {
 
     public void bindCardLongClickListener(@Nullable OnLongClickListener l) {
         getCard().setOnLongClickListener(l);
+    }
+
+    /** Optional shortcut on layouts that expose a description/checklist counter. */
+    public void bindDescriptionClickListener(@Nullable OnClickListener l) {
+        // Compact and title-only cards have no description counter.
     }
 
     public MaterialCardView getDraggable() {

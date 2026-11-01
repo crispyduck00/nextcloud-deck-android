@@ -45,6 +45,8 @@ android {
         dev {
             dimension "version"
             applicationIdSuffix ".dev"
+            versionCode 1027001
+            versionNameSuffix "-visual.2"
         }
         play {
             dimension "version"

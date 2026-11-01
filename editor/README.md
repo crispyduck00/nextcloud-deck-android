@@ -4,6 +4,12 @@ This branch adds an offline, visual Markdown editor to the **native Android
 Deck app**. Open a card's details and tap **Edit visually / Visuell bearbeiten**.
 The existing Markdown editor and preview remain available.
 
+Tap a card's checklist counter (for example **2/5**) to open the details tab
+directly at the description in preview mode, ready to tick checkboxes. The same
+shortcut is available in Upcoming cards. This temporary mode does not change the
+saved edit/preview preference; normal card taps retain their usual behavior.
+Checkbox changes use the existing card Save action.
+
 The visual editor is based on the MIT-licensed open-source Tiptap / ProseMirror
 packages. It is a focused description editor, not an implementation of Obsidian
 or its plugins. It has no account, subscription, CDN or runtime server dependency.

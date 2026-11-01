@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="open_description_preview">Open description preview</string>
+    <string name="open_checklist_preview">Open checklist, %1$d of %2$d completed</string>
     <string name="visual_editor_open">Edit visually</string>
     <string name="visual_editor_cancel">Cancel</string>
     <string name="visual_editor_apply">Apply</string>
