@@ -1,9 +1,13 @@
-# Nextcloud Deck Android Privacy Policy
+# Deck Fork Privacy Policy
 
-The "Nextcloud Deck Android" Android-App (in the following referred to as "App") does not collect or send any data from you or your device to a server of the developers or the [Nextcloud GmbH](https://nextcloud.com/). The App sends all data exclusively to the server configured by you with the intention to synchronize the contents of the App with those of the server. This data can contain IP-addresses, timestamps and further information as meta data.
+The "Deck Fork" Android-App (in the following referred to as "App") is an independent community fork of Deck for Android. It does not collect or send any data from you or your device to a server of the developers or the [Nextcloud GmbH](https://nextcloud.com/). The App sends all data exclusively to the server configured by you with the intention to synchronize the contents of the App with those of the server. This data can contain IP-addresses, timestamps and further information as meta data.
 It is important to mention that all contents of the App may also be transmitted to the configured server. This contents can also contain personal information depending on the use. The servers you configured are technically outside the access area of this App developers, so that we neither know nor can prevent what happens to your data there. Please consult the privacy policy of the respective server operator.
 
 The license of this project allows you to verify that no data is collected by the creators by reading the source code or asking someone else to do it.
+
+The optional visual description editor runs locally using assets bundled in the
+APK. It makes no runtime network requests and receives only the current editor
+draft, display language and theme; it has no account or credential interface.
 
 ## Permissions
 

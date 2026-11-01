@@ -1,5 +1,17 @@
 # Verification status — 2026-11-01
 
+## Deck Fork branding update
+
+The working editor and checklist shortcut have been reported working on the
+user's Android device. The fork is being promoted to the default branch with
+the app name **Deck Fork**, a **FORK** launcher badge, fork-specific source and
+issue links, and a prominent independent-fork notice. Build version:
+`1.27.0-fork.1`, version code `1027002`; `.dev` package identity is retained.
+The current build and app-specific lint results will be recorded here once
+complete. The previously verified editor build is documented below.
+
+## Previous preview 0.2
+
 Validated implementation commit: `6e33860cf09f5dbeeeac88129318179d55d2efb1`.
 Test build: `1.27.0-visual.2` (version code `1027001`).
 Base: upstream `stefan-niedermann/nextcloud-deck`, master commit
@@ -27,8 +39,8 @@ Base: upstream `stefan-niedermann/nextcloud-deck`, master commit
 - Downloaded CI archive SHA-256 and ZIP integrity were verified. The directly
   supplied test APK was then signed with a retained private development key.
   Its v2 signature, `.dev` package ID, version and unchanged payload were verified.
-- The initial visual-editor build was reported working on the user's Android
-  device. The new counter shortcut still needs the same practical acceptance.
+- The initial visual-editor build and subsequent counter shortcut were reported
+  working on the user's Android device. Broader device acceptance remains below.
 
 ## Direct test APK
 

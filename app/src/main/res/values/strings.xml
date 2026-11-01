@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name" translatable="false">Nextcloud Deck</string>
-    <string name="app_name_short" translatable="false">Deck</string>
+    <string name="app_name" translatable="false">Deck Fork</string>
+    <string name="app_name_short" translatable="false">Deck Fork</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="hint_search_deck">Search deck</string>
@@ -42,7 +42,7 @@
     <string name="about_version_title">Version</string>
     <string name="about_version">You are currently using %1$s</string>
     <string name="about_maintainer_title">Maintainer</string>
-    <string name="about_maintainer" translatable="false">Niedermann IT-Dienstleistungen</string>
+    <string name="about_maintainer" translatable="false">crispyduck00 (Deck Fork)</string>
     <string name="about_developers_title">Developers</string>
     <string name="about_developers" translatable="false">Stefan Niedermann, Artur Dawtjan</string>
     <string name="about_translators_title">Translators</string>
@@ -101,12 +101,12 @@
     <string name="label_start_at">Start at: %1$s</string>
     <string name="label_add">Add %1$s</string>
 
-    <string name="url_maintainer" translatable="false">https://www.niedermann.it/</string>
+    <string name="url_maintainer" translatable="false">https://github.com/crispyduck00/nextcloud-deck-android</string>
     <string name="url_about_icon_author" translatable="false">https://github.com/nextcloud/deck/commit/8c04ea8dc99e9b392f4039e8e5e6964d5a6d3453#diff-f3716cc279904617b1a21078526b6bf1R1</string>
-    <string name="url_source" translatable="false">https://github.com/stefan-niedermann/nextcloud-deck</string>
-    <string name="url_issues" translatable="false">https://github.com/stefan-niedermann/nextcloud-deck/issues/new/choose</string>
-    <string name="url_report_bug" translatable="false">https://github.com/stefan-niedermann/nextcloud-deck/issues/new?labels=bug&amp;template=bug_report.md</string>
-    <string name="url_license" translatable="false">https://github.com/stefan-niedermann/nextcloud-deck/blob/master/LICENSE</string>
+    <string name="url_source" translatable="false">https://github.com/crispyduck00/nextcloud-deck-android</string>
+    <string name="url_issues" translatable="false">https://github.com/crispyduck00/nextcloud-deck-android/issues/new/choose</string>
+    <string name="url_report_bug" translatable="false">https://github.com/crispyduck00/nextcloud-deck-android/issues/new?labels=bug&amp;template=bug_report.yml</string>
+    <string name="url_license" translatable="false">https://github.com/crispyduck00/nextcloud-deck-android/blob/master/LICENSE</string>
     <string name="url_translations" translatable="false">https://app.transifex.com/nextcloud/nextcloud/</string>
     <string name="url_about_icons_disclaimer_mdi" translatable="false">https://materialdesignicons.com/</string>
     <string name="url_fragment_update_deck" translatable="false">/index.php/settings/apps/installed/deck</string>
