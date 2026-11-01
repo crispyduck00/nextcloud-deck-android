@@ -67,3 +67,7 @@ app/fdroid
 app/dev
 app/mdm
 app/pfungstadt
+# Local editor tooling; the reproducible Android assets are committed.
+editor/node_modules/
+editor/test-results/
+editor/playwright-report/

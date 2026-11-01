@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="visual_editor_open">Visuell bearbeiten</string>
+    <string name="visual_editor_cancel">Abbrechen</string>
+    <string name="visual_editor_apply">Übernehmen</string>
+    <string name="visual_editor_loading">Editor wird geladen…</string>
+    <string name="visual_editor_error">Der Editor konnte nicht geladen werden. Die Beschreibung wurde nicht verändert. Schließe diesen Editor, um den bisherigen Markdown-Editor zu verwenden.</string>
+    <string name="visual_editor_conflict">Die Beschreibung wurde zwischenzeitlich geändert. Kopiere deinen Entwurf vor dem Schließen und öffne den Editor erneut mit der aktuellen Beschreibung.</string>
+    <string name="visual_editor_discard">Änderungen in diesem Editor verwerfen?</string>
+    <string name="visual_editor_keep_editing">Weiter bearbeiten</string>
+    <string name="visual_editor_visual">Visuell</string>
+    <string name="visual_editor_source">Markdown</string>
+    <string name="visual_editor_checklist">Checkliste</string>
+    <string name="visual_editor_bullet">Aufzählung</string>
+    <string name="visual_editor_ordered">Nummerierte Liste</string>
+    <string name="visual_editor_bold">Fett</string>
+    <string name="visual_editor_italic">Kursiv</string>
+    <string name="visual_editor_strike">Durchgestrichen</string>
+    <string name="visual_editor_heading">Überschrift</string>
+    <string name="visual_editor_link">Link</string>
+    <string name="visual_editor_remove_link">Link entfernen</string>
+    <string name="visual_editor_indent">Einrücken</string>
+    <string name="visual_editor_outdent">Ausrücken</string>
+    <string name="visual_editor_undo">Rückgängig</string>
+    <string name="visual_editor_redo">Wiederholen</string>
+    <string name="visual_editor_unsupported">Diese Beschreibung enthält Formatierungen, die sich nicht ohne Änderungen visuell bearbeiten lassen. Verwende den Markdown-Modus, um sie beizubehalten.</string>
+    <string name="visual_editor_invalid_link">Verwende einen Link mit https, http oder mailto.</string>
+</resources>

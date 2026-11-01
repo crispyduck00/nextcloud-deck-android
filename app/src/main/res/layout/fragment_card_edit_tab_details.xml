@@ -167,11 +167,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dependentsGroup">
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/descriptionVisualEdit"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text="@string/visual_editor_open" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/descriptionEditorWrapper"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacer_1x"
+                android:layout_below="@id/descriptionVisualEdit"
                 android:hint="@string/label_description">
 
                 <it.niedermann.android.markdown.MarkdownEditorImpl
@@ -189,6 +198,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
+                android:layout_below="@id/descriptionVisualEdit"
                 android:padding="@dimen/spacer_2x"
                 android:textColor="?attr/colorOnSurface"
                 android:textIsSelectable="true"
@@ -200,7 +210,7 @@
                 android:id="@+id/descriptionToggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
+                android:layout_below="@id/descriptionVisualEdit"
                 android:layout_alignParentEnd="true"
                 android:layout_gravity="bottom"
                 android:layout_marginEnd="6dp"

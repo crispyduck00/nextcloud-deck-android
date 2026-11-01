@@ -181,6 +181,13 @@ public class CardDetailsFragment extends Fragment implements
     }
 
     private void setupDescription() {
+        binding.descriptionVisualEdit.setVisibility(viewModel.canEdit() ? VISIBLE : GONE);
+        binding.descriptionVisualEdit.setOnClickListener(v -> {
+            if (getParentFragmentManager().findFragmentByTag(VisualDescriptionDialog.TAG) == null) {
+                VisualDescriptionDialog.newInstance(viewModel.getFullCard().getCard().getId(), viewModel.getAccount().getId())
+                        .show(getParentFragmentManager(), VisualDescriptionDialog.TAG);
+            }
+        });
         binding.descriptionViewer.setMovementMethod(LinkMovementMethod.getInstance());
         binding.descriptionViewer.setMarkdownString(viewModel.getFullCard().getCard().getDescription());
 

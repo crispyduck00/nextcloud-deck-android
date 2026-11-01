@@ -1,0 +1,38 @@
+name: Visual description editor
+
+on:
+  push:
+    paths:
+      - 'editor/**'
+      - 'app/src/main/assets/visual-editor/**'
+      - '.github/workflows/visual-editor.yml'
+  pull_request:
+    paths:
+      - 'editor/**'
+      - 'app/src/main/assets/visual-editor/**'
+      - '.github/workflows/visual-editor.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  editor:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: editor
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: editor/package-lock.json
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Check committed offline assets
+        run: git diff --exit-code -- ../app/src/main/assets/visual-editor
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser

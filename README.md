@@ -7,6 +7,11 @@
 
 An Android client for [Nextcloud Deck App](https://github.com/nextcloud/deck/).
 
+This development branch includes an **experimental visual description editor**
+with checklist controls and a Markdown source mode. See
+[editor/README.md](editor/README.md) for usage, architecture and build instructions,
+and [editor/VALIDATION.md](editor/VALIDATION.md) for the current verification status.
+
 ## ▶️ Access
 
 [![Latest Release](https://img.shields.io/github/v/tag/stefan-niedermann/nextcloud-deck?label=latest+release&sort=semver)](https://github.com/stefan-niedermann/nextcloud-deck/releases)
