@@ -1,13 +1,15 @@
 # Verification status — 2026-11-01
 
+Validated implementation commit: `99397ae012ab005bdac043b0c01fc734ea011adb`.
 Base: upstream `stefan-niedermann/nextcloud-deck`, master commit
 `04f68739bd701b37d126b60048f257f4da6fd921`.
 
 ## Completed
 
-- 28 Node/jsdom tests passed against the editor source (`npm test`).
-- 8 browser integration tests passed against the exact generated offline assets
-  in Chromium 138, using touch and 412px/360px viewports.
+- 28 Node/jsdom tests and 8 browser integration tests passed both locally and
+  in the fork's `Visual description editor` GitHub Actions workflow.
+- The generated offline assets rebuild without drift. Dependencies are
+  lockfile-pinned and complete third-party license texts ship in the APK.
 - Verified checklist creation without syntax, Enter continuation, visual checkbox
   toggling, nested checklists, bold, undo, mode switching, source-only edits,
   current-content Apply/Close bridge responses, attachment-link retention, and
@@ -16,24 +18,33 @@ Base: upstream `stefan-niedermann/nextcloud-deck`, master commit
   link navigation request occurs in the browser tests.
 - Inspected the actual 360px dark editor rendering and corrected checkbox row
   styling; a regression assertion checks checkbox/text alignment.
-- Offline bundle builds successfully; dependencies are lockfile-pinned and
-  third-party license texts are included in the Android assets.
-- Changed Android XML files parse successfully. `git diff --check` passes.
+- Native Java compilation and the dev APK build passed in Android CI run
+  `41307554292`. The existing Android unit-test job passed on its retry after
+  the first attempt hit a Maven Central HTTP 429 dependency-download limit.
+- The existing Gradle wrapper validation and CodeQL scan passed. The upstream
+  lint job also passed; its `lintDebug` command targets the two library modules,
+  so it must not be treated as an app-specific Android lint result.
+- Downloaded APK integrity and its v2 debug signature were verified. All four
+  bundled visual-editor assets match the committed source build byte-for-byte.
+- APK application ID: `it.niedermann.nextcloud.deck.dev`, version `1.27.0`.
+  It can coexist with the regular app. It is signed with a test/debug key.
+- APK SHA-256: `c9f9df420e8c3099b0b0f5472c0d8aece6ab7bb73a73b369c9a4a22f7795728f`.
+- Changed Android XML files parse successfully. The patch applies cleanly to
+  the upstream base, and `git diff --check` passes.
 
-## Not completed
+[Test APK artifact](https://github.com/crispyduck00/nextcloud-deck-android/actions/runs/41307554292/artifacts/13083623506)
 
-The native Android code has **not been compiled or run on a device** yet.
-The attempted `:app:assembleDevDebug` build reached Android SDK setup and stopped
-before compilation because the environment did not have the required licensed
-SDK packages recognized/accepted. No SDK license acceptance was performed.
+## Still to verify on Android
 
-Consequently there is no verified APK, native lifecycle test, SSO/sync test,
-Android IME/composition test or device performance result at this stage. The
-browser tests do not substitute for these checks. Run the upstream Android CI
-in the fork or build in an Android development environment with the required
-SDK packages already installed and licensed, then complete the acceptance list
-in `editor/README.md` before a release.
+The APK has not been run on a physical device or emulator. There is no Android
+instrumentation result for the new dialog's lifecycle, keyboard/IME composition,
+SSO/offline synchronization, accessibility or device performance. Browser tests
+and the existing native unit suite do not substitute for these acceptance checks.
 
-The additional `Visual description editor` CI workflow rebuilds the assets and
-runs both JavaScript test suites. Existing Android CI remains responsible for
-native lint, unit tests and APK generation.
+Complete the device checklist in `editor/README.md` and run
+`./gradlew :app:lintDevDebug` before a release. The pull request remains a draft
+and the APK is an experimental test build. No merge or production release has
+been performed.
+
+The local build environment originally stopped before compilation at SDK
+prerequisites; the successful GitHub Actions build supersedes that limitation.
