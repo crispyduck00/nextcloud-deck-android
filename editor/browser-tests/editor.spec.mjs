@@ -36,6 +36,7 @@ test('checklist button, Enter continuation, checkbox toggling and Markdown expor
   await page.getByRole('button', { name: 'Checklist', exact: true }).click();
   const editor = page.getByRole('textbox', { name: 'Description', exact: true });
   await editor.pressSequentially('Buy cells');
+  await expect(page.locator('li[data-type=taskItem] > div > p').first()).toHaveText('Buy cells');
   await editor.press('Enter');
   await editor.pressSequentially('Test charger');
   await expect(page.locator('input[type=checkbox]')).toHaveCount(2);

@@ -73,7 +73,10 @@ $('visual').addEventListener('click', () => setMode(false));
 $('markdown').addEventListener('input', changed);
 
 function command(name) {
-  const chain = editor.chain().focus();
+  // Tiptap's focus command restores a selection on the next animation frame.
+  // Fast typing after a toolbar tap can otherwise race that stale selection.
+  editor.view.focus();
+  const chain = editor.chain();
   switch (name) {
     case 'task': chain.toggleTaskList().run(); break;
     case 'bullet': chain.toggleBulletList().run(); break;
@@ -100,9 +103,10 @@ for (const button of document.querySelectorAll('[data-command]')) {
   button.addEventListener('pointerdown', event => event.preventDefault());
   button.addEventListener('click', () => command(button.dataset.command));
 }
-$('link-cancel').addEventListener('click', () => { $('link-form').hidden = true; editor.commands.focus(); });
+$('link-cancel').addEventListener('click', () => { $('link-form').hidden = true; editor.view.focus(); });
 $('link-remove').addEventListener('click', () => {
-  editor.chain().focus().extendMarkRange('link').unsetLink().run();
+  editor.view.focus();
+  editor.chain().extendMarkRange('link').unsetLink().run();
   $('link-form').hidden = true;
 });
 $('link-form').addEventListener('submit', event => {
@@ -113,7 +117,8 @@ $('link-form').addEventListener('submit', event => {
     $('link-error').hidden = false;
     return;
   }
-  const chain = editor.chain().focus().extendMarkRange('link');
+  editor.view.focus();
+  const chain = editor.chain().extendMarkRange('link');
   if (editor.state.selection.empty && !editor.isActive('link')) {
     chain.insertContent({ type: 'text', text: href, marks: [{ type: 'link', attrs: { href } }] }).run();
   } else {
