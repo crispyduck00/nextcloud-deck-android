@@ -56,6 +56,8 @@ public class EditCardViewModel extends BaseViewModel {
     private final MutableLiveData<Integer> cardColor$ = new MutableLiveData<>();
     private final SharedPreferences sharedPreferences;
     private final MutableLiveData<Boolean> descriptionIsPreview = new MutableLiveData<>(false);
+    private boolean descriptionPreviewShortcut;
+    private final MutableLiveData<Boolean> descriptionFocusRequested = new MutableLiveData<>(false);
     private boolean attachmentsBackPressedCallbackStatus = false;
 
     public EditCardViewModel(@NonNull Application application) {
@@ -76,10 +78,10 @@ public class EditCardViewModel extends BaseViewModel {
                     if (fullCard == null) {
                         throw new IllegalStateException("Description mode must be queried after initializing " + EditCardViewModel.class.getSimpleName() + " with a card.");
                     }
-                    if (isPreview && TextUtils.isEmpty(fullCard.getCard().getDescription())) {
+                    if ((descriptionPreviewShortcut || isPreview) && TextUtils.isEmpty(fullCard.getCard().getDescription())) {
                         descriptionIsPreview.setValue(false);
                     } else {
-                        descriptionIsPreview.setValue(isPreview);
+                        descriptionIsPreview.setValue(descriptionPreviewShortcut || isPreview);
                     }
                     return descriptionIsPreview;
                 })
@@ -107,11 +109,33 @@ public class EditCardViewModel extends BaseViewModel {
      */
     public void toggleDescriptionPreviewMode() {
         final boolean newValue = Boolean.FALSE.equals(descriptionIsPreview.getValue());
+        descriptionPreviewShortcut = false;
         descriptionIsPreview.setValue(newValue);
         sharedPreferences
                 .edit()
                 .putBoolean(getApplication().getString(R.string.shared_preference_description_preview), newValue)
                 .apply();
+    }
+
+    /** One navigation only; never changes the user's saved edit/preview preference. */
+    public void requestDescriptionPreview() {
+        descriptionPreviewShortcut = true;
+        descriptionIsPreview.setValue(true);
+        descriptionFocusRequested.setValue(true);
+    }
+
+    public LiveData<Boolean> getDescriptionFocusRequested() {
+        return descriptionFocusRequested;
+    }
+
+    public void consumeDescriptionFocusRequest() {
+        descriptionFocusRequested.setValue(false);
+    }
+
+    /** A new card intent must not inherit a previous shortcut's temporary mode. */
+    public void resetDescriptionPreviewShortcut() {
+        descriptionPreviewShortcut = false;
+        descriptionFocusRequested.setValue(false);
     }
 
     public LiveData<Integer> getBoardColor() {

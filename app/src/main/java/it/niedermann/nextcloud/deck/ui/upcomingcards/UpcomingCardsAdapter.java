@@ -160,6 +160,7 @@ public class UpcomingCardsAdapter extends RecyclerView.Adapter<RecyclerView.View
                                 toggleDone
                         ), counterMaxValue, utils);
                 cardViewHolder.bindCardClickListener((v) -> activity.startActivity(EditActivity.createEditCardIntent(activity, cardItem.getAccount(), cardItem.getCurrentBoardLocalId(), cardItem.getFullCard().getLocalId())));
+                cardViewHolder.bindDescriptionClickListener(v -> activity.startActivity(EditActivity.createDescriptionPreviewIntent(activity, cardItem.getAccount(), cardItem.getCurrentBoardLocalId(), cardItem.getFullCard().getLocalId())));
             } else {
                 throw new IllegalStateException("Item at position " + position + " is a " + item.getClass().getSimpleName() + " but viewHolder is no " + AbstractCardViewHolder.class.getSimpleName());
             }

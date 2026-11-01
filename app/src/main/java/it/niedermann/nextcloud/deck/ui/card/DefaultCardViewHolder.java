@@ -85,11 +85,13 @@ public class DefaultCardViewHolder extends AbstractCardViewHolder {
         final var taskStatus = fullCard.getCard().getTaskStatus();
         if (taskStatus.taskCount > 0) {
             binding.cardCountTasks.setText(context.getResources().getString(R.string.task_count, String.valueOf(taskStatus.doneCount), String.valueOf(taskStatus.taskCount)));
+            binding.cardCountTasks.setContentDescription(context.getString(R.string.open_checklist_preview, taskStatus.doneCount, taskStatus.taskCount));
             binding.cardCountTasks.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(context, R.drawable.ic_outline_check_box_24), null, null, null);
             binding.cardCountTasks.setVisibility(View.VISIBLE);
         } else {
             final String description = fullCard.getCard().getDescription();
             if (!TextUtils.isEmpty(description)) {
+                binding.cardCountTasks.setContentDescription(context.getString(R.string.open_description_preview));
                 binding.cardCountTasks.setCompoundDrawablesWithIntrinsicBounds(ContextCompat.getDrawable(context, R.drawable.ic_subject_24), null, null, null);
                 binding.cardCountTasks.setText(null);
                 binding.cardCountTasks.setVisibility(View.VISIBLE);
@@ -161,6 +163,15 @@ public class DefaultCardViewHolder extends AbstractCardViewHolder {
 
     public void bindCardLongClickListener(@Nullable OnLongClickListener l) {
         binding.card.setOnLongClickListener(l);
+    }
+
+    @Override
+    public void bindDescriptionClickListener(@Nullable OnClickListener l) {
+        binding.cardCountTasks.setOnClickListener(l);
+        // setOnClickListener(null) alone leaves a recycled TextView clickable.
+        // Disable it in card-selection mode so the normal card click can handle it.
+        binding.cardCountTasks.setClickable(l != null);
+        binding.cardCountTasks.setFocusable(l != null);
     }
 
     public MaterialCardView getDraggable() {

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_fork_notice">Independent community fork of the Deck Android app by Stefan Niedermann and contributors. Includes a visual description editor and quick checklist preview. Modified on 2026-11-01. Not affiliated with or endorsed by Nextcloud GmbH or the upstream maintainers. Licensed under GPLv3+; original copyrights are retained.</string>
+    <string name="about_upstream_title">Original project</string>
+    <string name="about_upstream_url" translatable="false">https://github.com/stefan-niedermann/nextcloud-deck</string>
+</resources>

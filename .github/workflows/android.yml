@@ -28,7 +28,13 @@ jobs:
           check-latest: true
           cache: 'gradle'
       - name: Lint
-        run: bash ./gradlew lintDebug --stacktrace --no-configuration-cache
+        run: bash ./gradlew :app:lintDevDebug :cross-tab-drag-and-drop:lintDebug :tab-layout-helper:lintDebug --stacktrace --no-configuration-cache
+      - name: Upload lint reports
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: app-fork-lint
+          path: app/build/reports/lint-results-devDebug.*
 
   test:
     name: Unit tests
@@ -58,9 +64,9 @@ jobs:
           check-latest: true
           cache: 'gradle'
       - name: Build debug APK
-        run: bash ./gradlew assembleDev --no-configuration-cache
+        run: bash ./gradlew assembleDevDebug --no-configuration-cache
       - name: Upload APK
         uses: actions/upload-artifact@v7
         with:
-          name: app-dev-debug
+          name: app-fork-debug
           path: app/build/outputs/apk/dev/debug/app-dev-debug.apk

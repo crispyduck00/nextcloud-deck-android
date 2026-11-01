@@ -1,5 +1,5 @@
 name: "🚀 Feature request"
-description: "Propose an idea for Deck Android"
+description: "Propose an idea for Deck Fork"
 labels: [ "enhancement" ]
 body:
 
@@ -9,7 +9,8 @@ body:
         **Guidelines for submitting issues:**
 
         * Please search the existing issues first, it's likely that your issue was already reported or even fixed.
-        * This repository is *only* for issues within the Deck Android app, **not** for the [Deck server app](https://github.com/nextcloud/deck/issues/) and **not** for the [Nextcloud Android app](https://github.com/nextcloud/android/issues).
+        * This repository is for **Deck Fork**, the independent Android fork. Report fork-specific problems here, not to the upstream maintainers.
+        * This is **not** the [Deck server app](https://github.com/nextcloud/deck/issues/) or the [Nextcloud Android app](https://github.com/nextcloud/android/issues).
 
   - type: textarea
     id: problem-description

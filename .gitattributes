@@ -1,0 +1,2 @@
+# Bundled Markdown serializers contain significant trailing spaces in literals.
+app/src/main/assets/visual-editor/editor.js -whitespace linguist-generated=true

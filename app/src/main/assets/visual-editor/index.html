@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,interactive-widget=resizes-content">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'none'; connect-src 'none'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Description</title>
+  <link rel="stylesheet" href="editor.css">
+  <script defer src="editor.js"></script>
+</head>
+<body>
+  <nav id="modes" aria-label="Editor mode">
+    <button id="visual" data-label="visual" aria-pressed="true">Visual</button>
+    <button id="source" data-label="source" aria-pressed="false">Markdown</button>
+  </nav>
+  <div id="notice" role="status" hidden></div>
+  <div id="toolbar" role="toolbar" aria-label="Formatting">
+    <button data-command="task" data-title="checklist" aria-label="Checklist">☑</button>
+    <button data-command="bullet" data-title="bullet" aria-label="Bullet list">• ≡</button>
+    <button data-command="ordered" data-title="ordered" aria-label="Numbered list">1. ≡</button>
+    <button data-command="bold" data-title="bold" aria-label="Bold"><b>B</b></button>
+    <button data-command="italic" data-title="italic" aria-label="Italic"><i>I</i></button>
+    <button data-command="strike" data-title="strike" aria-label="Strikethrough"><s>S</s></button>
+    <button data-command="heading" data-title="heading" aria-label="Heading">H</button>
+    <button data-command="link" data-title="link" aria-label="Link">↗</button>
+    <button data-command="indent" data-title="indent" aria-label="Indent">⇥</button>
+    <button data-command="outdent" data-title="outdent" aria-label="Outdent">⇤</button>
+    <button data-command="undo" data-title="undo" aria-label="Undo">↶</button>
+    <button data-command="redo" data-title="redo" aria-label="Redo">↷</button>
+  </div>
+  <main id="workspace">
+    <div id="editor"></div>
+    <textarea id="markdown" aria-label="Markdown" spellcheck="false" hidden></textarea>
+  </main>
+  <form id="link-form" hidden>
+    <label for="link-url" data-label="link">Link</label>
+    <input id="link-url" type="url" inputmode="url" autocomplete="off" placeholder="https://…">
+    <span id="link-error" role="alert" hidden></span>
+    <div>
+      <button id="link-cancel" type="button" data-label="cancel">Cancel</button>
+      <button id="link-remove" type="button" data-label="removeLink">Remove link</button>
+      <button type="submit" data-label="apply">Apply</button>
+    </div>
+  </form>
+</body>
+</html>

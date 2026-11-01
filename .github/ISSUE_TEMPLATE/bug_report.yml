@@ -4,7 +4,7 @@ labels: [ "bug" ]
 body:
   - type: markdown
     attributes:
-      value: Please note this is a free and open-source project. All people take on their own time to help you, so please, be patient.
+      value: This tracker is for Deck Fork, an independent community fork. Please report fork problems here rather than to the original app maintainers. Do not include passwords, tokens or private card content in reports.
 
   - type: checkboxes
     id: before-posting
@@ -12,11 +12,11 @@ body:
       label: "This issue respects the following points:"
       description: All conditions are **required**. Your issue can be closed if these are checked incorrectly.
       options:
-        - label: I have read the [FAQ](https://github.com/stefan-niedermann/nextcloud-deck/blob/master/FAQ.md)
+        - label: I have read the [FAQ](https://github.com/crispyduck00/nextcloud-deck-android/blob/master/FAQ.md)
           required: true
         - label: I have searched for existing issues
           required: true
-        - label: The issue affects the Deck Android app, neither the [Deck server app](https://github.com/nextcloud/deck/issues/) nor the [Nextcloud Android app](https://github.com/nextcloud/android/issues).
+        - label: The issue affects Deck Fork, neither the [Deck server app](https://github.com/nextcloud/deck/issues/) nor the [Nextcloud Android app](https://github.com/nextcloud/android/issues).
           required: true
 
   - type: textarea
@@ -41,7 +41,7 @@ body:
   - type: input
     id: version-nextcloud-android-deck
     attributes:
-      label: Deck Android version
+      label: Deck Fork version
       placeholder: Version of this app
     validations:
       required: true
@@ -93,6 +93,7 @@ body:
     attributes:
       label: App Store
       options:
+        - label: Deck Fork APK
         - label: Google Play Store
         - label: Google Play Store (Beta channel)
         - label: F-Droid

@@ -103,4 +103,50 @@ public class EditCardViewModelTest {
         assertTrue("Stored state must be updated in edit mode when the description mode is toggled",
                 sharedPrefs.getBoolean(context.getString(R.string.shared_preference_description_preview), true));
     }
+
+    @Test
+    public void descriptionShortcutOpensPreviewWithoutChangingSavedPreference() throws InterruptedException {
+        final var card = new FullCardWithProjects();
+        card.setCard(new Card("Checklist", "- [ ] First\n- [x] Second", 0));
+        viewModel.initializeExistingCard(1, card, true);
+        sharedPrefs.edit().putBoolean(context.getString(R.string.shared_preference_description_preview), false).commit();
+
+        assertFalse(TestUtil.getOrAwaitValue(viewModel.getDescriptionMode()));
+        viewModel.requestDescriptionPreview();
+
+        assertTrue(TestUtil.getOrAwaitValue(viewModel.getDescriptionMode()));
+        assertTrue(TestUtil.getOrAwaitValue(viewModel.getDescriptionFocusRequested()));
+        assertFalse("Shortcut must not change the default for other cards",
+                sharedPrefs.getBoolean(context.getString(R.string.shared_preference_description_preview), true));
+
+        viewModel.consumeDescriptionFocusRequest();
+        assertFalse(TestUtil.getOrAwaitValue(viewModel.getDescriptionFocusRequested()));
+        assertTrue("Consuming the scroll request must not close preview",
+                TestUtil.getOrAwaitValue(viewModel.getDescriptionMode()));
+    }
+
+    @Test
+    public void newNavigationResetsTemporaryPreviewMode() throws InterruptedException {
+        final var card = new FullCardWithProjects();
+        card.setCard(new Card("Checklist", "- [ ] First", 0));
+        viewModel.initializeExistingCard(1, card, true);
+        viewModel.requestDescriptionPreview();
+        assertTrue(TestUtil.getOrAwaitValue(viewModel.getDescriptionMode()));
+
+        viewModel.resetDescriptionPreviewShortcut();
+        assertFalse(TestUtil.getOrAwaitValue(viewModel.getDescriptionMode()));
+        assertFalse(TestUtil.getOrAwaitValue(viewModel.getDescriptionFocusRequested()));
+    }
+
+    @Test
+    public void shortcutStillAllowsSwitchingBackToMarkdown() throws InterruptedException {
+        final var card = new FullCardWithProjects();
+        card.setCard(new Card("Checklist", "- [ ] First", 0));
+        viewModel.initializeExistingCard(1, card, true);
+        viewModel.requestDescriptionPreview();
+        assertTrue(TestUtil.getOrAwaitValue(viewModel.getDescriptionMode()));
+
+        viewModel.toggleDescriptionPreviewMode();
+        assertFalse(TestUtil.getOrAwaitValue(viewModel.getDescriptionMode()));
+    }
 }

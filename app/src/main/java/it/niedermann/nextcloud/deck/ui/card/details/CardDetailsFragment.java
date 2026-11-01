@@ -22,6 +22,8 @@ import androidx.annotation.Px;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.ColorUtils;
 import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -129,6 +131,21 @@ public class CardDetailsFragment extends Fragment implements
             binding.descriptionEditor.setCurrentSingleSignOnAccount(ssoAccount, color);
             binding.descriptionViewer.setCurrentSingleSignOnAccount(ssoAccount, color);
         });
+
+        viewModel.getDescriptionFocusRequested().observe(getViewLifecycleOwner(), requested -> {
+            if (!Boolean.TRUE.equals(requested)) return;
+            final var currentBinding = binding;
+            currentBinding.getRoot().post(() -> {
+                if (binding != currentBinding || !currentBinding.getRoot().isAttachedToWindow()
+                        || !Boolean.TRUE.equals(viewModel.getDescriptionFocusRequested().getValue())) return;
+                currentBinding.descriptionViewer.requestFocus();
+                WindowCompat.getInsetsController(requireActivity().getWindow(), currentBinding.getRoot())
+                        .hide(WindowInsetsCompat.Type.ime());
+                currentBinding.descriptionViewer.scrollTo(0, 0);
+                currentBinding.getRoot().scrollTo(0, currentBinding.descriptionWrapper.getTop());
+                viewModel.consumeDescriptionFocusRequest();
+            });
+        });
     }
 
 //    @Override
@@ -181,6 +198,13 @@ public class CardDetailsFragment extends Fragment implements
     }
 
     private void setupDescription() {
+        binding.descriptionVisualEdit.setVisibility(viewModel.canEdit() ? VISIBLE : GONE);
+        binding.descriptionVisualEdit.setOnClickListener(v -> {
+            if (getParentFragmentManager().findFragmentByTag(VisualDescriptionDialog.TAG) == null) {
+                VisualDescriptionDialog.newInstance(viewModel.getFullCard().getCard().getId(), viewModel.getAccount().getId())
+                        .show(getParentFragmentManager(), VisualDescriptionDialog.TAG);
+            }
+        });
         binding.descriptionViewer.setMovementMethod(LinkMovementMethod.getInstance());
         binding.descriptionViewer.setMarkdownString(viewModel.getFullCard().getCard().getDescription());
 

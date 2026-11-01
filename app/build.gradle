@@ -44,7 +44,10 @@ android {
         }
         dev {
             dimension "version"
+            // Retain the installed preview package so Deck Fork updates preserve local data.
             applicationIdSuffix ".dev"
+            versionCode 1027002
+            versionNameSuffix "-fork.1"
         }
         play {
             dimension "version"

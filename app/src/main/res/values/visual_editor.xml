@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="open_description_preview">Open description preview</string>
+    <string name="open_checklist_preview">Open checklist, %1$d of %2$d completed</string>
+    <string name="visual_editor_open">Edit visually</string>
+    <string name="visual_editor_cancel">Cancel</string>
+    <string name="visual_editor_apply">Apply</string>
+    <string name="visual_editor_loading">Loading editor…</string>
+    <string name="visual_editor_error">The editor could not be loaded. Your description has not been changed. Close this editor to use the existing Markdown editor.</string>
+    <string name="visual_editor_conflict">The description changed while this editor was open. Copy your draft before closing, then reopen the editor to use the current description.</string>
+    <string name="visual_editor_discard">Discard the changes in this editor?</string>
+    <string name="visual_editor_keep_editing">Keep editing</string>
+    <string name="visual_editor_visual">Visual</string>
+    <string name="visual_editor_source">Markdown</string>
+    <string name="visual_editor_checklist">Checklist</string>
+    <string name="visual_editor_bullet">Bullet list</string>
+    <string name="visual_editor_ordered">Numbered list</string>
+    <string name="visual_editor_bold">Bold</string>
+    <string name="visual_editor_italic">Italic</string>
+    <string name="visual_editor_strike">Strikethrough</string>
+    <string name="visual_editor_heading">Heading</string>
+    <string name="visual_editor_link">Link</string>
+    <string name="visual_editor_remove_link">Remove link</string>
+    <string name="visual_editor_indent">Indent</string>
+    <string name="visual_editor_outdent">Outdent</string>
+    <string name="visual_editor_undo">Undo</string>
+    <string name="visual_editor_redo">Redo</string>
+    <string name="visual_editor_unsupported">This description contains formatting that cannot be edited visually without changes. Use Markdown mode to preserve it.</string>
+    <string name="visual_editor_invalid_link">Use an https, http or mailto link.</string>
+</resources>

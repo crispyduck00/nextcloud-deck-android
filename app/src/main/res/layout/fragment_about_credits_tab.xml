@@ -57,6 +57,25 @@
             android:padding="10dp"
             android:text="@string/about_version" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/about_fork_notice" />
+
+        <TextView
+            style="?android:attr/listSeparatorTextViewStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/about_upstream_title" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:padding="10dp"
+            android:text="@string/about_upstream_url" />
+
         <LinearLayout
             android:id="@+id/about_server_app_version_container"
             android:layout_width="match_parent"

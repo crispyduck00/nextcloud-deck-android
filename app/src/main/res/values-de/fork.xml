@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_fork_notice">Unabhängiger Community-Fork der Deck-Android-App von Stefan Niedermann und Mitwirkenden. Enthält einen visuellen Beschreibungseditor und einen Direktzugriff auf die Checklisten-Vorschau. Geändert am 01.11.2026. Keine Verbindung zu oder Freigabe durch Nextcloud GmbH oder die Upstream-Maintainer. Lizenziert unter GPLv3+; die ursprünglichen Urheberrechte bleiben erhalten.</string>
+    <string name="about_upstream_title">Ursprüngliches Projekt</string>
+</resources>
