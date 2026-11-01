@@ -40,6 +40,12 @@ The fork remains a **community preview**, with broader device acceptance below.
 
 ### Direct APK and update identity
 
+Published as [Deck Fork 1.27.0-fork.1 — Community preview](https://github.com/crispyduck00/nextcloud-deck-android/releases/tag/v1.27.0-fork.1),
+tagged at merge commit `9979a695ba4de863346528de2ba183d8330d9cc4`.
+The published GitHub asset's size and SHA-256 match the verified direct APK.
+The matching source archives include the final verification documentation;
+application code/resources/assets are unchanged from tested commit `73196a8`.
+
 - File: `Deck_Fork_1.27.0-fork.1.apk`.
 - Version: `1.27.0-fork.1`; code: `1027002`.
 - Package: `it.niedermann.nextcloud.deck.dev` (retained for update compatibility).

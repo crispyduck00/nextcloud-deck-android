@@ -25,6 +25,9 @@ is `1.27.0-fork.1` (version code `1027002`). This is a community preview; device
 acceptance checks and the current test evidence are recorded in
 [editor/VALIDATION.md](editor/VALIDATION.md).
 
+**[Download Deck Fork 1.27.0-fork.1 APK](https://github.com/crispyduck00/nextcloud-deck-android/releases/download/v1.27.0-fork.1/Deck_Fork_1.27.0-fork.1.apk)**
+· [Release notes and matching source archives](https://github.com/crispyduck00/nextcloud-deck-android/releases/tag/v1.27.0-fork.1).
+
 The historical Gradle flavor `dev` and application ID
 `it.niedermann.nextcloud.deck.dev` are retained so existing visual-editor preview
 installations can update without losing local data. Supplied APK updates reuse

@@ -14,6 +14,9 @@ to share the working prototype here rather than open a duplicate request:
 
 https://github.com/crispyduck00/nextcloud-deck-android/pull/1
 
+An installable community-preview APK with matching source and verification notes
+is available at https://github.com/crispyduck00/nextcloud-deck-android/releases/tag/v1.27.0-fork.1.
+
 It adds checklist/list/formatting buttons without requiring Markdown syntax.
 The existing editor and preview remain available, descriptions remain Markdown,
 and saving/syncing use the existing Deck flow. Tiptap/ProseMirror is bundled
