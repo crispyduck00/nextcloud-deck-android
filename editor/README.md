@@ -1,6 +1,6 @@
 # Visual description editor (experimental)
 
-This branch adds an offline, visual Markdown editor to the **native Android
+Deck Fork adds an offline, visual Markdown editor to the **native Android
 Deck app**. Open a card's details and tap **Edit visually / Visuell bearbeiten**.
 The existing Markdown editor and preview remain available.
 
@@ -96,8 +96,12 @@ cd ..
 `npm run build` generates `app/src/main/assets/visual-editor/`, including bundled
 JavaScript and third-party license texts. The generated files are committed so
 Android builds do not require Node or a runtime dependency download. CI rebuilds
-them and rejects drift. The upstream Android CI builds the dev APK, which can be
-installed alongside the standard app (`.dev` application ID suffix).
+them and rejects drift. Android CI builds the fork using the historical `dev`
+flavor, which can be installed alongside the standard app (`.dev` application ID
+suffix). Its visible name is Deck Fork and its launcher badge reads FORK. This
+package identity is retained for updates from the earlier preview APKs. Directly
+supplied updates reuse the retained signing key from preview 0.2; CI artifact
+APKs use different runner-generated keys.
 
 The standalone browser tests use a 412px touch viewport, plus a 360px dark-mode
 case, against the exact bundled files. For a locally available compatible

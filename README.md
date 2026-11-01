@@ -1,5 +1,7 @@
 # Deck Fork for Android
 
+<img src="branding/icon.svg" width="96" height="96" alt="Deck Fork icon with FORK badge">
+
 [![Android CI](https://github.com/crispyduck00/nextcloud-deck-android/actions/workflows/android.yml/badge.svg)](https://github.com/crispyduck00/nextcloud-deck-android/actions/workflows/android.yml)
 [![GitHub issues](https://img.shields.io/github/issues/crispyduck00/nextcloud-deck-android.svg)](https://github.com/crispyduck00/nextcloud-deck-android/issues)
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
